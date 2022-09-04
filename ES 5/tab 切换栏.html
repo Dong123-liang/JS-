@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        h4{
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            transform: translate(-50%,0);
+        }
+        .tabsbox{
+            position: absolute;
+            width: 800px;
+            height: 250px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border: 1px solid pink;
+        }
+        .firstnav{
+            height: 50px;
+            width: 800px;
+            line-height: 50px;
+            border-bottom: 1px solid #ccc;
+        }
+        ul li{
+            display: inline-block;
+            line-height: 50px;
+            width: 100px;
+            text-align: center;
+            border-right:1px solid #ccc;
+        }
+        ul li input{
+            width: 80px;
+        }
+        .liactive{
+            border-bottom: 1px solid white;
+        }
+        .tabadd{
+            position: absolute;
+            left: 98%;
+            top: 0%;
+        }
+        section input{
+            width: 700px;
+            height: 150px;
+        }
+        section{
+            position: absolute;
+            left: 25px;
+            top: 60px;
+            display: none;
+        }
+        .conactive{
+            display: block;
+        }
+        .del{
+            position: absolute;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <h4>Js面向对象 动态添加标签页</h4>
+    <div class="tabsbox" id="tab">
+        <!-- tab标签 -->
+        <nav class="firstnav">
+            <ul>
+                <li class="liactive"><span>测试1</span><button class="del">x</button></li>
+                <li><span>测试2</span><button class="del">x</button></li>
+                <li><span>测试3</span><button class="del">x</button></li>
+            </ul>
+            <div class="tabadd">
+                <button>+</button>
+            </div>
+        </nav>
+
+        <!-- tab内容 -->
+        <div class="tabscon">
+            <section class="conactive">内容1</section>
+            <section>内容2</section>
+            <section>内容3</section>
+        </div>
+    </div>
+    <script src="tab 切换栏.js"></script>
+</body>
+</html>
