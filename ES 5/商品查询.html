@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      padding: 100px;
+    }
+    table {
+      width: 500px;
+      margin-top: 30px;
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    td,
+    th {
+      border: 1px solid #333;
+    }
+
+    thead tr {
+      height: 40px;
+      background-color: #ccc;
+    }
+    tbody tr {
+      height: 40px;
+    }
+  </style>
+  <body>
+    <span>按价格查询:<input type="text" id="priceLow" /></span>
+    <i>--</i>
+    <span
+      ><input type="text" id="priceHigh" /><button id="btnPrice">
+        搜索
+      </button></span
+    >
+    <span
+      >按照商品名称查询:<input type="text" id="name" /><button id="btnName">
+        搜索
+      </button></span
+    >
+    <table>
+      <thead>
+        <tr>
+          <td>ID</td>
+          <td>名称</td>
+          <td>产品价格</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+  <script>
+    window.addEventListener("load", function () {
+      var data = [
+        {
+          id: 1,
+          pname: "小米",
+          price: 4599,
+        },
+        {
+          id: 2,
+          pname: "华为",
+          price: 6999,
+        },
+        {
+          id: 1,
+          pname: "苹果",
+          price: 8999,
+        },
+        {
+          id: 1,
+          pname: "三星",
+          price: 7999,
+        },
+        {
+          id: 1,
+          pname: "OPPO",
+          price: 3999,
+        },
+      ];
+      var priceLow = document.getElementById("priceLow");
+      var priceHigh = document.getElementById("priceHigh");
+      var name = document.getElementById("name");
+      var tbody = document.querySelector("tbody");
+      var btnPrice = document.getElementById("btnPrice");
+      var btnName = document.getElementById("btnName");
+      setData(data);
+      function setData(mydata) {
+        if(priceHigh.value != ""&& btnprice.value != ""){
+        tbody.innerHTML = "";
+         }
+        mydata.forEach(function (value) {
+          let tr = document.createElement("tr");
+          tr.innerHTML =
+            "<td>" +
+            value.id +
+            "</td>" +
+            "<td>" +
+            value.pname +
+            "</td>" +
+            "<td>" +
+            value.price +
+            "</td>";
+          tbody.appendChild(tr);
+        });
+      }
+      btnPrice.addEventListener("click", function () {
+        var low = priceLow.value;
+        var high = priceHigh.value;
+        var newdata = data.filter(function (value) {
+          return value.price >= low && value.price <= high;
+        });
+        console.log(newdata);
+        setData(newdata);
+      });
+
+      btnName.addEventListener("click", function () {
+        var arr = [];
+        var newdataId = data.some(function (value) {
+          if (name.value == value.pname) {
+            //some()方法返回的是布尔值，所以用arr.push(value)生成新数组形式;
+            arr.push(value);
+            return true;
+          }
+        });
+        setData(arr);
+      });
+    });
+  </script>
+</html>
