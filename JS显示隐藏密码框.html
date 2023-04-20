@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+    div {
+        width: 300px;
+        margin: 0 auto;
+        margin-top: 200px;
+        border-bottom:1px solid #ccc ;
+    }
+    #Text{
+    width: 250px;
+    height: 40px;
+    border: 0;
+    outline:none;
+    color:#ccc;
+    }
+    div img{
+        float:right;
+        margin-top: 10px;
+        width: 20px;
+        cursor:pointer;
+    }
+</style>
+<body>
+    <div>
+    <input type="text" id="Text" value="请输入密码">
+    <label>
+    <img src="download/闭眼睛.png" alt="">
+    </label>
+    </div>
+</body>
+<script>
+    var btn = document.getElementById('Text');
+    var Eye = document.querySelector('img');
+    var flag = 0;
+   Eye.onclick = function(){
+    if(flag == 0){
+    btn.type = 'text';
+    flag = 1;
+    Eye.src='download/小眼睛.png';
+   }else{
+    btn.type = 'password';
+    flag = 0;
+    Eye.src = 'download/闭眼睛.png';
+   }
+}
+   btn.onfocus =function(){   //鼠标获得焦点
+    btn.type = 'password';
+    btn.value = '';
+    btn.style.color = 'black';
+   }
+</script>
+</html>

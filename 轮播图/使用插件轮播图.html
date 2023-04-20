@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="swiper.css/swiper-bundle.min.css">
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+   .box{
+    height:400px;
+    width: 600px;
+    border-radius:4px ;
+    border: 1px solid black;
+    position: relative;
+    left: 50%;
+    top:-100px;
+    transform:translate(-50%,50%) ;
+   /*  overflow: hidden; */
+   }
+   .w{
+     width:30px;
+     height:30px;
+     border-radius:4px ;
+     background-color: rgb(129, 123, 123);
+     cursor: pointer;
+     display: none;
+     position: absolute;
+     top:185px;
+   }
+   .w:hover{
+   background-color: rgb(92, 89, 89);
+   }
+   .right{
+    right: 0;
+    background-image:url('../图片/大于号.png') ;
+    background-size:contain;
+   }
+   .left{
+    left: 0;
+    background-image: url('../图片/小于号.png');
+    background-size:contain;
+   }
+   .box ul {
+    list-style: none;
+    position:absolute;
+    top: 0;
+    width: 500%;
+   }
+   ul li{
+    float: left;
+   }
+   img{
+    width: 600px ;
+    height:400px ;   
+   }
+   ol{
+    position: absolute;
+    bottom: 40px;
+    left: 50px;
+    list-style: none;
+   }
+   ol li{
+    float: left;
+    width: 8px;
+    height: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    margin: 0 3px;
+    border-radius: 50%;
+    cursor: pointer;
+   }
+   .current{
+    background-color: #fff;
+   }
+   .swiper {
+    width: 600px;
+    height: 400px;
+    background-color: pink;
+}  
+    .swiper-slide{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+</style>
+</style>
+<body>
+    <div class="box">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">    <li><a><img src="图片/周杰伦.jpg" alt=""></a></li></div>
+            <div class="swiper-slide">    <li><a><img src="图片/周杰伦2.jpg" alt=""></a></li></div>
+            <div class="swiper-slide">    <li><a><img src="图片/周杰伦3.jpg" alt=""></a></li></div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination"></div>
+        
+        <!-- 如果需要导航按钮 -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        
+        <!-- 如果需要滚动条 -->
+        <div class="swiper-scrollbar"></div>
+    </div>
+</div>
+</body>
+<script src="swiper.js\swiper-bundle.min.js"></script>
+<script>
+    var mySwiper = new Swiper ('.swiper', {
+   // direction: 'vertical', // 垂直切换选项
+   direction: 'horizontal',
+    loop: true, // 循环模式选项
+    
+    // 如果需要分页器
+    pagination: {
+      el: '.swiper-pagination',
+    },
+    
+    // 如果需要前进后退按钮
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },})
+ </script>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        margin-right:20px ;
+    }
+    tr:hover{
+        background-color: rgb(192, 248, 255);
+    }
+    .r-click {
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            position: absolute;
+            border-bottom: 0px;
+        }
+        
+    .r-list {
+            width: 100px;
+            height: 25px;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+    }
+    .r-click {
+            width: 100px;
+            height: 50px;
+            border: 1px solid black;
+            position: absolute;
+            border-bottom: 0px;
+        }
+        
+        .r-list {
+            width: 100px;
+            height: 25px;
+            border-bottom: 1px solid black;
+            cursor: pointer;
+        }
+</style>
+<body>
+    <div class="r-click">
+        <div class="r-list">增添</div>
+        <div class="r-list">删除</div>
+    </div>
+
+    <table border="1" width="600px" height="80px" align="center" cellpadding="20" cellspacing="20" style="border-collapse:collapse;margin-top:100px;">
+        <thead>
+        <tr><td><input type="checkbox" name="" id="all">全选</td></tr>
+      </thead>
+        <tbody id="tbody">
+        <tr><td><input type="checkbox" name="">文件1</td></tr>
+        <tr><td><input type="checkbox" name="">文件2</td></tr>
+        <tr><td><input type="checkbox" name="">文件3</td></tr>
+        <tr><td><input type="checkbox" name="">文件4</td></tr>
+        <tr><td><input type="checkbox" name="">文件5</td></tr>
+        </tbody>
+        <tfoot>
+        <tr><td><input type="button" value="增添" style="float:left;" id="add"> <input type = 'button' id = "delete" value="删除" style ='float: right;'></td></tr>
+       </tfoot>
+    </table>
+</body>
+<script>
+
+    var allBtn = document.getElementById('all');
+    var radioBtn = document.getElementById('tbody').getElementsByTagName('input');
+    var trr = document.getElementById('tbody').getElementsByTagName('tr');
+    var add = document.getElementById('add');
+    var delet = document.getElementById('delete');
+    allBtn.onclick =function(){
+        // console.log(this.checked); 点击返回true,取消返回false
+        for(var i=0;i<radioBtn.length;i++){
+            radioBtn[i].checked=this.checked;
+            radioBtn[i].parentNode.parentNode.style.backgroundColor = 'pink';
+        }
+            allBtn.parentNode.parentNode.style.backgroundColor = 'pink';
+        
+        if(this.checked==false){
+            for(var j=0;j<radioBtn.length;j++){
+            radioBtn[j].parentNode.parentNode.style.backgroundColor = '';
+            }
+            allBtn.parentNode.parentNode.style.backgroundColor = '';
+        }
+       
+    }
+
+    for(var i=0;i<radioBtn.length;i++){       //给每个复选框绑定点击事件
+    
+        radioBtn[i].onclick=function(){
+        if(this.checked==true){
+        this.parentNode.parentNode.style.backgroundColor = 'pink';
+        } else{
+            this.parentNode.parentNode.style.backgroundColor = '';
+        }
+         
+         for(var j=0;j<radioBtn.length;j++){        //遍历查询，当所有的复选框点击时，flag=true，全选框为checked=true；
+                var  flag =true;
+                if(!radioBtn[j].checked){
+                    flag = false ;
+                    break;
+                }
+             }
+            allBtn.checked = flag; 
+            if(flag){
+                allBtn.parentNode.parentNode.style.backgroundColor = 'pink';
+                }
+            
+        }
+    }
+
+    add.onclick = function(){                     //增添删除
+        var tr =document.createElement('tr'); 
+        tr.innerHTML = '<td><input type="checkbox">新增文件</td>';
+        tbody.insertBefore(tr,tbody.children[0]);
+    
+     }
+    
+     delet.onclick =function(){
+        for (var x = 0; x < radioBtn.length; x++) {
+                if (radioBtn[x].checked == true) {
+                    trr[x].remove();
+                    x=x-1;
+                }
+
+            }
+     }
+     
+     var div1 = document.getElementsByClassName('r-click')[0];    //右键菜单
+    //  var ul = document.getElementsByTagName('ul')[0];
+        div1.style.display = "none";
+        div1.style.top = "1px";
+        div1.style.left = "1px";
+        tbody.oncontextmenu = function(e) {
+            e.preventDefault();
+            var x = e.clientX;
+            var y = e.clientY;
+            div1.style.display = "block";
+            div1.style.top = y + "px";
+            div1.style.left = x + "px";
+        }
+        tbody.onclick = function(e) {
+            if (e.buttons == 0) {
+                div1.style.display = "none";
+            }
+        }
+</script>
+</html>    

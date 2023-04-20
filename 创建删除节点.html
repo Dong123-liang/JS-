@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom增添删改</title>
+<style>
+    .box{
+        height: 200px;
+        width: 400px;
+        margin: 20px auto;
+        border: 1px solid black;
+        text-align: center;
+    }
+    li{
+        display:inline-block;
+        width: 40px;
+        height: 40px;
+        background-color:1px solid black;
+        background-color: brown;
+        border: 1px solid black;
+        text-align: center;
+        line-height: 40px;
+        list-style: none;
+        margin-right:10px ;
+    }
+    button{
+        display: block;
+        margin: 20px auto;
+    }
+</style>
+<script>
+
+       function myClick(idStr,fun){
+        var btn = document.getElementById(idStr);
+        btn.onclick = fun;
+    }
+   
+
+    window.onload = function(){
+   myClick("btn01",function(){
+    var li = document.createElement("li");
+    var sxText = document.createTextNode("陕西");
+    li.appendChild(sxText);
+    var city = document.getElementById("city");
+    city.appendChild(li);
+   });
+
+
+   myClick("btn02",function(){
+    var li = document.createElement("li");
+    var sxText = document.createTextNode("陕西");
+    li.appendChild(sxText);
+    var city = document.getElementById("city");
+     var bj=document.getElementById("bj");
+     city.insertBefore(li,bj);
+     
+   });
+
+
+ myClick("btn03",function(){
+    var li = document.createElement("li");
+    var sxText = document.createTextNode("陕西");
+    li.appendChild(sxText);
+    var city = document.getElementById("city");
+     var bj=document.getElementById("bj");
+     city.replaceChild(li,bj);
+   });
+
+   myClick("btn04",function(){
+    var li = document.createElement("li");
+    var sxText = document.createTextNode("陕西");
+    li.appendChild(sxText);
+    // var city = document.getElementById("city");
+     var bj=document.getElementById("bj");
+     bj.parentNode.removeChild(bj);   //parentNode 可以自己找寻父节点
+   });
+
+   myClick("btn05",function(){
+   var bj=document.getElementById("bj");
+   bj.innerHTML="陕西";
+    });
+
+  myClick("btn06",function(){
+    var city = document.getElementById("city");
+    var li = document.createElement("li");
+    li.innerHTML = "陕西";   
+    city.appendChild(li);
+  });
+};
+</script>
+</head>
+<body>
+    <div class="box">
+        <p>你喜欢那座城市?</p>
+        <ul id="city">
+        <li id="bj">北京</li>
+        <li id="sh">上海</li>
+        <li id="dj">东京</li>
+        <li id="se">首尔</li>
+        </ul>
+  </div>
+  <div id="btnList">
+    <button id="btn01">创建一个"陕西"节点</button>
+    <button id="btn02">将"陕西"节点插入到北京前面</button>
+    <button id="btn03">使用"陕西"节点替换北京节点</button>
+    <button id="btn04">删除北京节点</button>
+    <button id="btn05">用innerHTML来替换北京</button>
+    <button id="btn06">用innerHTML来增添"陕西"</button>
+   </div> 
+</body>
+</html>

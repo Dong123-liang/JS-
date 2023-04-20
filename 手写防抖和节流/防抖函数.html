@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>防抖函数</title>
+  </head>
+  <body>
+    <h3>
+      防抖：前面的所有的触发都被取消，最后一次执行在规定的时间之后才会触发，也就是说如果连续快速的触发,只会执行最后一次
+    </h3>
+    <h3>
+      常用的应用场景search搜索时，用户在不断输入值时，用防抖来节约请求资源。
+    </h3>
+    <input type="text" />
+  </body>
+  <script>
+    window.addEventListener("load", function () {
+      let input = document.querySelector("input");
+      function debounced(fn, time) {
+        let timer = null;
+        return function () {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn();
+          }, time);
+        };
+      }
+      function fnc() {
+        console.log(input.value);
+      }
+
+      input.addEventListener("input", debounced(fnc, 2000));
+    });
+  </script>
+</html>

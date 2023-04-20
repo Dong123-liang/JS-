@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模拟计算器</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        table{
+           margin: 200px;
+        }
+        button {
+            width:100%;
+            height:100%;
+            background-color: rgb(102, 240, 102);
+        }
+
+        button:hover {
+            background-color: black;
+            color: rgb(255, 249, 237);
+        }
+
+        button:active {
+            background-color: rgb(79, 72, 72);
+            color: white;
+        }
+        table{
+            width: 388px;
+            height: 450px;
+            background: rgb(192, 248, 109);
+        }
+        #result{
+            width: 100%;
+            height: 100%;
+            outline: none;
+            font-size: 24px;
+         
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <table border="1px">
+            <tr >
+                <td colspan="4">
+                    <input type="text" id="result" >
+                </td>
+            </tr>
+            <tr>
+                <td><button id="le" onclick="getChar('(')">(</button></td>
+                <td><button id="rg" onclick="getChar(')')">)</button></td>
+                <td><button id="baifen" onclick="getChar('%')">%</button></td>
+                <td><button id="C" onclick="clear1()">C</button></td>
+            </tr>
+            <tr>
+                <td><button id="seven" onclick="getChar('7')">7</button></td>
+                <td><button id="eight" onclick="getChar('8')">8</button></td>
+                <td><button id="nine" onclick="getChar('9')">9</button></td>
+                <td><button id="divi" onclick="getChar('/')">/</button></td>
+            </tr>
+            <tr>
+                <td><button id="four" onclick="getChar('4')">4</button></td>
+                <td><button id="five" onclick="getChar('5')">5</button></td>
+                <td><button id="six" onclick="getChar('6')">6</button></td>
+                <td><button id="mul" onclick="getChar('*')">*</button></td>
+            </tr>
+            <tr>
+                <td><button id="one" onclick="getChar('1')">1</button></td>
+                <td><button id="two" onclick="getChar('2')">2</button></td>
+                <td><button id="three" onclick="getChar('3')">3</button></td>
+                <td><button id="dec" onclick="getChar('-')">-</button></td>
+            </tr>
+            <tr>
+                <td><button id="zero" onclick="getChar('0')">0</button></td>
+                <td><button id="point" onclick="getChar('.')">.</button></td>
+                <td><button id="=" onclick="getResult()">=</button></td>
+                <td><button id="add" onclick="getChar('+')">+</button></td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+<script>
+    // 点击按键返回按键值
+    function getChar(btnid) {
+        var btns = document.getElementsByTagName("button")
+        switch (btnid) {
+            case '+':
+                setNum('+')
+                break;
+            case '.':
+                setNum('.')
+                break;
+            case '=':
+                setNum('=')
+                break;
+            case '0':
+                setNum('0')
+                break;
+            case '1':
+                setNum('1')
+                break;
+            case '2':
+                setNum('2')
+                break;
+            case '3':
+                setNum('3')
+                break;
+            case '-':
+                setNum('-')
+                break;
+            case '4':
+                setNum('4')
+                break;
+            case '5':
+                setNum('5')
+                break;
+            case '6':
+                setNum('6')
+                break;
+            case '7':
+                setNum('7')
+                break;
+            case '8':
+                setNum('8')
+                break;
+            case '9':
+                setNum('9')
+                break;
+            case '/':
+                setNum('/')
+                break;
+            case '*':
+                setNum('*')
+                break;
+            case '(':
+                setNum('(')
+                break;
+            case ')':
+                setNum(')')
+                break;
+            case '%':
+                setNum('%')
+                break;
+            default:
+                break;
+        }
+    }
+    // 清空显示屏
+    function clear1() {
+        document.getElementById("result").value = ""
+    }
+
+    // 将数值显示到显示屏
+    function setNum(charCode) {
+        var origin = document.getElementById('result');
+        origin.value += charCode;
+        origin.innerText = origin.value;
+    }
+
+    // 计算结果
+    function getResult(){
+        var res=eval(document.getElementById("result").value);//eval(string)计算传过来的表达式并将结果返回
+        // 追加'='
+        setNum('=');
+        // 追加结果
+        setNum(res)
+    }
+</script>
+
+</html>

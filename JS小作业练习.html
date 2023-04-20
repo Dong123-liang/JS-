@@ -1,0 +1,407 @@
+!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*         var age , sex , address;
+        age=prompt('请输入你的出生年份');
+        sex=prompt('请输入你的性别');
+        address=prompt('请输入你的职业');
+        age = 2022 - age;
+        alert('你的年龄是：' + age + '\n' +'你的性别是：' + sex +'\n' + '你的职业是：'+address ); */
+
+      /*         alert('九九乘法表');
+        var str = '';
+        for(var i=1;i<=9;i++){
+            for(var j=1;j<=i;j++){
+                str += j + 'x' + i + '=' + j * i + '\t';
+            }
+            str += '\n';
+        }
+        console.log(str); */
+
+      /*     var arr1=[1,2,11,21,6];
+        var arr2=[];
+        for(var i = 0 ;i < 5; i++){
+            if(arr1[i] > 10){
+                arr2[arr2.length] = arr1[i];//索引号写为arr2.length，开始为0，if语句执行一次自动检测一次，相当于自加效果。
+            }
+        }
+        console.log(arr2); */
+
+      //选择与冒泡排序
+      //  var arr=[4,6,3,8,2,9];
+      /*          选择排序
+        for(var  i = 0 ;i < arr.length ; i++){
+            for(var j = i+1 ; j < arr.length ;j++){
+                if(arr[i] > arr[j]){
+                    var temp = arr[i] ;
+                        arr[i] = arr [j];
+                        arr[j] = temp;   //每次循环找出当前最小值
+                }
+            }
+        }
+         console.log(arr);  */
+      //  冒泡排序
+/*          var arr=[4,6,3,8,2,9];   
+        for(var i = 0; i<arr.length ;i++){
+            for(var j = 0; j<arr.length-i ;j++){
+                if(arr[j] > arr[j+1]){
+                    var temp = arr[j+1] ;
+                        arr[j+1] = arr [j]; //每次循环找到当前最大值
+                        arr[j] = temp;
+                } 
+            }
+        }
+        console.log(arr);  */
+
+      //计算器
+      /*          var tt1 = prompt('请输入所需运算的第一个数字');
+         var tt2 =  prompt('请输入所需哪种运算(+ - * /)');
+         var tt3 = prompt('请输入所需运算的第二个数字');
+         var num;
+         Number(tt1);
+         function guiji(sum1 , sum2){
+            switch (tt2){
+              
+                case '+': num = parseFloat(tt1) + parseFloat(tt3) ; break;
+                case '*': num = parseFloat(tt1) * parseFloat(tt3) ; break;
+                case '-': num = tt1 - tt3 ; break;
+                case '/': num = tt1 / tt3 ; break;
+                default : alert('不支持该种计算哦!'); 
+            }
+            return num;
+         }
+        alert('计算的结果为:' + guiji(tt1 , tt3)); */
+
+      /*     //猜数字游戏
+    function getRandom(min,Max){
+            return Math.floor(Math.random()*(Max - min + 1)) + min;
+        }
+        
+    var ran = getRandom(1,10);
+    console.log(ran);
+    while(true){
+        var num = prompt('请你输入一个1-10之间的整数');
+        if(ran > num ){
+            alert('你猜小了哦');
+        } else if (ran < num){
+            alert('你猜大了哦');
+        }else{
+            alert('恭喜你猜中了!');
+            break;
+        }
+    }
+ */
+
+     //倒计时器
+/*     var times = prompt('请输入你有日程的日期:(例:"2022-10-1 18:00:00")');
+    function count(time){
+        var inputTime = +new Date(time);
+        var date1 = +new Date();
+        var numdate = (inputTime - date1) / 1000 ;
+        var d = parseInt(numdate / 60 / 60 / 24);
+        d = d<10?'0'+d:d;
+        var h = parseInt(numdate / 60 / 60 % 24);
+        h = h<10?'0'+h:h;
+        var m = parseInt(numdate / 60 % 60);
+        m = m<10?'0'+m:m;
+        var s = parseInt(numdate % 60);
+        s = s<10?'0'+s:s;
+        return d + '天' + h + '时' + m + '分' + s + '秒'; 
+    }
+      alert('倒计时：'+ count(times)); 
+ */
+      /*    //数组去重
+    var arr = [1,2,3,3,2,8,9];
+    var newArr=new Array();
+    function removal(arr){
+        for(i=0;i<arr.length;i++){
+        if(newArr.indexOf(arr[i])===-1){
+            newArr.push(arr[i]);
+        }
+    }            
+        return newArr;
+    }
+    console.log(removal(arr));*/
+
+   //数组返回某一个字符的所有索引值及其出现的次数
+/*     var arr = [1,2,3,2,1,2,2,3,6,4,,5,5];
+    var index = arr.indexOf(2);
+    var num=0;
+    while(index!==-1){
+        console.log('2的所有索引值为:' + index );
+        num++;
+        index = arr.indexOf(2,index+1);
+    }
+    console.log('2共出现了'+ num + '次'); */
+
+    //用创建对象统计字符串中出现最多的字符及其次数
+/*     var str = 'abcskabsadbaksbk';
+    var obj = {};
+    for(var i = 0; i<str.length; i++){
+        var up = str.charAt(i);  //遍历字符串的每一个字符
+        if(obj[up]){     
+            obj[up]++;
+        }else{
+            obj[up]=1; //属性值
+        }
+    } 
+    console.log(obj);
+    var max =0;
+    for(var k in obj){
+        if(obj[k]>=max){
+            max = obj[k];
+            console.log('出现最多次数的字符为:' + k);
+        }
+    }
+    console.log('出现次数为' + max); */
+ 
+
+/*     var each=function(array,fn)
+        {
+            for(var index in array)
+            {
+                //以window为调用者来调用fn函数
+                //index，array[index]是传给fn函数的参数
+                fn.call(null,index,array[index]);
+            }
+        }   
+            each([4,20,3],function(index,ele)
+            {
+                document.write("第"+ index+"个元素是"+ele+"<br />");
+           }); */
+/*         function sum(){
+        var n=1;
+        return function jay(){
+            var m=1;
+            return function bay(){
+
+            console.log('n'+'='+ n++);
+            console.log('m'+'='+ m++);
+                }  
+        }
+    } 
+    var a=sum()();  
+    a();       
+    a(); 
+    a();  */ 
+/* 
+   //求最大值
+    var arr = [1,21,343,22,534,22];
+    var max =Math.max.apply(this,arr)//或者Math.max(...arr);
+    console.log(max); */
+/*    
+    //对象解构
+    let person ={name:'轨迹',sex:'男'};
+    let {name,sex} =person ;
+    let {name:myname} =person;
+    name = '哈哈';
+    console.log(name);
+    console.log(sex);
+    console.log(myname);
+    console.log(person.name); //证明为深拷贝 */
+
+/*     // 2.函数体内只有一条语句时可以省略花括号和return
+    let arr = [12, 2, 4, 65, 21, 67];
+    // arr.sort(function(a, b) {  //此函数调用sort方法，对多位数进行排序，只使用sort()只能对个位数排序
+    //     return a - b
+    // })
+   arr.sort((a, b) => a - b);
+   console.log(arr); //[2, 4, 12, 21, 65, 67] */
+  
+/* 
+   // Symbol函数参数的唯一作用：作为symbol的描述，方便在控制台打印输出时加以区分。
+   // 但是每一个symbol都是独一无二的，参数的作用只是为了便于描述
+   let s2 = Symbol("liu");
+   let s3 = Symbol("liu");
+   console.log(s2, typeof s2); //Symbol(liu) symbol
+   console.log(s3);//symbol(liu)
+   console.log(s2 === s3); //false */
+
+/* 
+// Symbol.for:返回以该参数作为名称的 Symbol 值
+let s4 = Symbol.for("liu");
+let s5 = Symbol.for("liu");
+console.log(s4, s5, typeof s4, s4 === s5); //Symbol(liu) Symbol(liu) symbol true
+
+ */
+
+/* let o = {
+  name: "liu",
+};
+var age = Symbol("age");
+o[age] = "21";
+console.log(o); //{ name: 'liu', [Symbol(age)]: '21' }
+console.log(Object.keys(o)); //[ 'name' ]
+console.log(Object.getOwnPropertySymbols(o)); //[ Symbol(age) ]
+ */
+
+// 2.Symbol.isConcatSpreadable用于设置数组和对象是否可以展开。
+// 默认情况下数组在concat的时候会展开
+/* const arr1 = [1, 2];
+const arr2 = [3, 4];
+console.log(arr1.concat(arr2)); //[ 1, 2, 3, 4 ]
+arr2[Symbol.isConcatSpreadable] = false;
+console.log(arr2);
+console.log(arr1.concat(arr2)); //[ 1, 2, [ 3, 4, [Symbol(Symbol.isConcatSpreadable)]: false ] ] */
+
+//4.1 Array默认具有iterator接口，可以通过[Symbol.iterator]获取数据的迭代器对象：
+/* const arr = ["a", "b", "c"];
+const iterator = arr[Symbol.iterator]();
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next());
+console.log(iterator.next()); */
+
+
+ // 4.2 Object默认不具备iterator接口，为其添加一个Symbol.iterator属性即可实现iterator接口
+ //为什么对象不具有iterator接口？因为对象的哪个属性先遍历，哪个属性后遍历是不确定的，需要开发者手动指定，本质上，遍历器是一种线性处理，对于任何非线性的数据结构，部署遍历器接口，就等于部署一种线性转换
+/* const o = {
+  [Symbol.iterator]: function () {
+    let i = 0;
+    return {
+      next() {
+        return i < 8
+          ? { value: i++, done: false }
+          : { value: undefined, done: true };
+      },
+    };
+  },
+};
+for (const item of o) {
+  console.log(item);
+} */
+
+
+/* let func3 = (name) => ({
+  name: name,
+});
+console.log(func3('轨迹').name); */
+
+/* var a=1;
+var obj_ = {
+  a:2,
+  fun:function(){
+    console.log(this.a)
+  }
+};
+setTimeout(obj_.fun,1000);//1 此时this指向window全局
+setTimeout(obj_.fun.bind(obj_),1000);//2 bind改变this指向，指向obj_
+setTimeout(()=>{
+  obj_.fun();//2   相当于obj_调用fun,隐式绑定，this指向obj_与外面的函数无关
+},1000);
+setTimeout(function(){
+  obj_.fun();//2   相当于obj_调用fun,隐式绑定，this指向obj_与外面的函数无关
+},1000);
+console.log(obj_.fun); */
+
+/* // 3.Generator函数的基本使用
+function* func1() {
+  console.log("state1 start");
+  yield "state1 end";
+  console.log("state2 start");
+  yield "state" + 2 + " end";
+  console.log("state3 start");
+  return "state3 end";
+}
+// 3.1调用 Generator 函数后，会返回一个遍历器对象，是一个指向内部状态的指针对象。该函数并不执行。
+const i = func1();
+console.log(i);
+
+// 3.2每次调用next方法，内部指针就从函数头部或上一次停下来的地方开始执行，直到遇到下一个yield表达式（或return语句）为止
+// 相当于Generator 函数是分段执行的，yield表达式是暂停执行的标记，而next方法可以恢复执行
+let a1 = i.next(); //state1 start
+console.log(a1); // { value: 'state1 end', done: false }
+let a2 = i.next(); //state2 start
+console.log(a2); //{ value: 'state2 end', done: false }
+let a3 = i.next(); //state3 start
+console.log(a3); //{ value: 'state3 end', done: true }
+let a4 = i.next();
+console.log(a4); //{ value: undefined, done: true } */
+
+
+
+/* function* func1(arg) {
+  console.log(arg);
+  let one = yield 111;
+
+  console.log(one);
+  yield 222;
+
+  yield 333;
+}
+const i = func1("halo");
+console.log(i.next());
+// next方法中传递的参数将作为上一个yield语句的返回值
+i.next("aaaa"); */
+
+
+ /* function* f() {
+  for(var i = 0; true; i++) {
+    var reset = yield i;
+    if(reset) { i = -1; }
+  }
+}
+
+var g = f();
+
+console.log(g.next()) // { value: 0, done: false }
+console.log(g.next()) // { value: 1, done: false }
+console.log(g.next()) // { value: 2, done: false }
+console.log(g.next()) //{ value: 2, done: false }
+console.log(g.next(true)) // { value: 0, done: false }
+ */
+/* function getUsers() {
+  setTimeout(() => {
+    let data = "this is the users data";
+    //   传递第一个函数的执行结果
+    iterator.next(data);
+  }, 1000);
+}
+function getOrders() {
+  setTimeout(() => {
+    let data = "this is the orders data";
+    iterator.next(data);
+  }, 1000);
+}
+function getGoods() {
+  setTimeout(() => {
+    let data = "this is the goods data";
+    iterator.next(data);
+  }, 1000);
+}
+function* g() {
+  let users = yield getUsers();
+  console.log(users);
+  let orders = yield getOrders();
+  console.log(orders);
+  let goods = yield getGoods();
+  console.log(goods);
+}
+const iterator = g();
+iterator.next(); */
+
+const p =new Promise((resolve,rejects)=>{
+    setTimeout((()=>{
+        resolve('用户数据');
+    }),1000)
+})
+//调用then 方法 then方法的返回结果是Promise对象，对象状态由回调函数的执行结果决定
+//1. 如果回调函数中返回的结果是 非promise 类型的属性，状态为成功
+const result = p.then(value =>{
+    console.log(value);
+    return 1;
+},reason => {
+    console.warn(reason);
+})
+
+console.log(result);
+    </script>
+  </body>
+</html>

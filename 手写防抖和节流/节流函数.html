@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>节流函数</title>
+  </head>
+  <body>
+    <h3>
+      节流(throttle)：在规定的间隔时间范围内不会重复触发回调，只有大于这个时间间隔才会触发回调，把频繁触发变为少量触发(规定时间内执行一次)
+    </h3>
+    <h3>
+      常见应用场景 1.鼠标不断点击触发,mousedown(单位时间内只触发一次)
+      2.监听滚动事件,比如是否滑到底部自动加载更多,用throttle来判断
+    </h3>
+    <input type="text" value="" />
+    <button>2秒内点我加1</button>
+  </body>
+  <script>
+    window.addEventListener("load", function () {
+      let input = document.querySelector("input");
+      let btn = document.querySelector("button");
+      input.value = 0;
+			//封装的节流函数
+      function throttle(fn, time) {
+        let flag = false;
+        return function () {
+          if (flag) {
+            return;
+          }
+          flag = true;
+          setTimeout(() => {
+            fn();
+            flag = false;
+          }, time);
+        };
+      }
+			
+      function fnc() {
+        input.value++;
+      }
+      btn.addEventListener("click", throttle(fnc, 2000));
+    });
+  </script>
+</html>

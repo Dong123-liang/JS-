@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input{
+        margin-right:20px ;
+    }
+</style>
+<body>
+    <table border="1" width="600px" height="80px" align="center" cellpadding="20" cellspacing="20" style="border-collapse:collapse;margin-top:100px;">
+        <tr><td><input type="checkbox" name="" id="all">全选</td></tr>
+        <tbody id="tbody">
+        <tr><td><input type="checkbox" name="">文件1</td></tr>
+        <tr><td><input type="checkbox" name="">文件2</td></tr>
+        <tr><td><input type="checkbox" name="">文件3</td></tr>
+        <tr><td><input type="checkbox" name="">文件4</td></tr>
+        <tr><td><input type="checkbox" name="">文件5</td></tr>
+    </tbody>
+    </table>
+</body>
+<script>
+    var allBtn = document.getElementById('all');
+    var radioBtn = document.getElementById('tbody').querySelectorAll('input');
+    allBtn.onclick =function(){
+        // console.log(this.checked); 点击返回true,取消返回false
+        for(var i=0;i<radioBtn.length;i++){
+            radioBtn[i].checked=this.checked;
+        }
+    }
+    for(var i=0;i<radioBtn.length;i++){       //给每个复选框绑定点击事件
+        
+        radioBtn[i].onclick=function(){
+             for(var j=0;j<radioBtn.length;j++){        //遍历查询，当所有的复选框点击时，flag=true，全选框为checked=true；
+                var  flag =true;
+                if(!radioBtn[j].checked){
+                    flag = false ;
+                    break;
+                }
+             }
+            allBtn.checked = flag;
+        }
+    }
+</script>
+</html>

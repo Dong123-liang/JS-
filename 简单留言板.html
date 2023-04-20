@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+ * {
+    margin: 0;
+    padding: 0;
+    }
+body{
+    padding: 100px;
+}
+ .box{
+    width: 300px;
+    height: 300px;
+    border:1px solid red;
+    outline: none;
+    resize: none;
+ }
+
+ li{
+     width: 400px;
+     height: 50px;
+     line-height:50px;
+     background-color: antiquewhite;
+     list-style: none;
+     margin: 10px 0;
+
+ }
+
+</style>
+<body>
+
+    <textarea class="box"></textarea>
+    <button>发布</button>
+    <ul></ul>
+    
+</body>
+<script>
+    var ul = document.querySelector('ul');
+    var btn = document.querySelector('button');
+    var txt = document.querySelector('.box');
+    btn.onclick = function(){
+
+    if(txt.value == ''){
+        alert('您还没有输入能容哦!');
+    }else{
+    var lili = document.createElement('li');
+    lili.innerHTML = txt.value;
+    ul.insertBefore(lili,ul.children[0]);
+    }
+    
+    }
+</script>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            #outbox{/*計算機底座 */
+                width: 388px;
+                height: 450px; 
+                border: 0px;
+                background-color: rgb(117, 174, 184);
+                position: relative; /*对于父级元素的移动 */
+            }
+            
+            #in_put{  /*輸入底座 */
+                background-color: white; 
+                width: 350px;
+                height: 100px;
+                display:inline-block;
+                position: relative;
+                left: 19px; 
+                top: 10px;
+            }
+
+            #input_box{    /*輸入框 */
+               height: 30px;
+               left: 20px;
+               font-size: 15px;
+               /*background-color: rgb(199, 184, 187);*/
+               position: absolute;
+            }
+
+            #out_box{       /*輸出框 */
+                height: 30px;
+                width: 100px;
+                left: 250px;
+                top: 30px;
+                color: rgb(45, 188, 255);
+                font-size: 30px;
+                /* background-color: rgb(199, 184, 187); */
+                position: absolute;
+            }
+
+            .inbox_1{
+                height: 50px;
+                width: 357px; 
+                /*background-color: rgb(71, 136, 161);*/ 
+                display: block;
+                position: relative;
+                left: 19px;
+                margin-top: 20px;
+            }
+            .inbox_2{  /*按鍵底座 */
+                height: 50px;
+                width: 265px; 
+                /*background-color: rgb(71, 136, 161); */
+                display: block;
+                position: relative;
+                left: 19px;
+                margin-top: 5px;
+            }
+            .ininbox{  /*按鍵框 */
+                width: 84px;
+                height: 35px;
+                background-color: rgb(196, 139, 146);
+                display: inline-block;  /*？？？問豆豆*/
+                position: relative;    
+                left: 0px;
+                top: 2px;
+                text-align: center; /*控制字体*/
+                padding-top: 10px; /*控制字体*/
+            }
+            
+            
+
+        </style>
+    </head>
+    <body>
+        <div id="outbox" >
+            
+            <div id="in_put">
+                <p id="input_box"></p>
+                <p id="out_box"></p>
+            </div>
+
+            <div class="inbox_1">    
+                <div class="ininbox" id="add" onclick="submit(add.innerHTML)">+</div>
+                <div class="ininbox" id="cut" onclick="submit(cut.innerHTML)">-</div>
+                <div class="ininbox" id="mult" onclick="submit(mult.innerHTML)">*</div>
+                <div class="ininbox" id="divi" onclick="submit(divi.innerHTML)">/</div>
+            </div>
+            <div onclick="show()" style="height: 111px; width: 85px; background-color: rgb(196, 139, 146); position:absolute;right: 18px; top: 180px;text-align: center;padding-top: 100px; ">
+                =
+            </div>
+            <div class="inbox_2">
+                <div class="ininbox" id="seven" onclick="submit(seven.innerHTML)">7</div>
+                <div class="ininbox" id="eight" onclick="submit(eight.innerHTML)">8</div>
+                <div class="ininbox" id="nine" onclick="submit(nine.innerHTML)">9</div>
+                
+            </div>
+            <div class="inbox_2">
+                <div class="ininbox" id="four" onclick="submit(four.innerHTML)">4</div>
+                <div class="ininbox" id="five" onclick="submit(five.innerHTML)">5</div>
+                <div class="ininbox" id="six" onclick="submit(six.innerHTML)">6</div>
+            </div>
+            <div class="inbox_2">
+                <div class="ininbox" id="three" onclick="submit(three.innerHTML)">3</div>
+                <div class="ininbox" id="two" onclick="submit(two.innerHTML)">2</div>
+                <div class="ininbox" id="one" onclick="submit(one.innerHTML)">1</div>
+            </div>
+            <div class="inbox_2">
+                <div class="ininbox" id="zero" onclick="submit(zero.innerHTML)" style="width: 172px;">0</div>
+                <div class="ininbox" id="node" onclick="submit(node.innerHTML)">.</div>
+            </div>
+
+            <div onclick="get_empty()" style="height: 30px; width: 85px; background-color: rgb(245, 27, 52); position:absolute;right: 18px; top: 400px;text-align: center;padding-top: 10px; ">
+                c
+            </div>
+        </div>
+    </body>
+    <script src="./computed.js"></script>
+</html>
+
+

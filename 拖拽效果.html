@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+</head>
+<style>
+    .box {
+        height: 400px;
+        width: 400px;
+        background-color: rgb(110, 233, 206);
+        display: none;
+        transform: translate(-50%, -50%);
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+    }
+</style>
+<script>
+    window.onload = function() {
+        var btn = document.querySelector('btn');
+        var box = document.querySelector('.box'); 
+        var box1 = document.querySelector('#box');
+        var btn = addEventListener('click', function() {
+            box.style.display = 'block';
+        });
+        box1.addEventListener('mousedown', function(e) {
+            var x = e.pageX - box1.offsetLeft;
+            var y = e.pageY - box1.offsetTop;
+            document.addEventListener('mousemove', move)
+
+            function move(e) {
+                box.style.left = e.pageX - x + 'px';
+                box.style.top = e.pageY - y + 'px';
+                box.style.cursor = 'move';
+            }
+            document.addEventListener('mouseup', function() {
+
+                document.removeEventListener('mousemove', move)
+            })
+        })
+    };
+</script>
+
+<body>
+    <p id="btn">请点击我!!!
+        <div class="box" id='box'>
+            <span>拖拽</span>
+        </div>
+    </p>
+</body>

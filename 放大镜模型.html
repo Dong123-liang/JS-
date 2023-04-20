@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>放大镜</title>
+</head>
+
+
+
+
+<style>
+    body{
+        padding: 100px;
+    }
+    .box {
+        height: 300px;
+        width: 400px;
+        border: 1px solid black;
+        box-shadow: 20px 20px 40px rgb(139, 137, 137);
+        border-radius: 5px;
+        background: url("download/周杰伦.jpg") no-repeat;
+        background-size:cover ;
+        position: relative;
+    }
+    
+    .mask {
+        height: 200px;
+        width: 180px;
+        border: 1px solid black;
+        background-color: rgb(220, 238, 139);
+        opacity: .5;
+        display: none;
+        position:absolute;
+        cursor: move;
+    }
+    img{
+        vertical-align: middle;
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+    .bigGround{
+        height: 600px;
+        width: 500px;
+        position: absolute;
+        left: 525px;
+        top: 10px ;
+        border: 1px solid black;
+        box-shadow: 20px 20px 40px rgb(139, 137, 137);
+        border-radius: 5px;
+        overflow: hidden;
+/*         background: url("download/周杰伦.jpg") no-repeat;
+        background-size:cover ; */
+        display: none;
+    }
+</style>
+<script>
+    window.onload = function() {
+        var box1 = document.querySelector('.box');
+        var mask = document.querySelector('.mask');
+        var bigGround = document.querySelector('.bigGround');
+        var bigImg = document.querySelector('img');
+        box1.addEventListener('mouseover', function(e) {
+            mask.style.display = 'block';
+            bigGround.style.display = 'block';
+
+        })
+        box1.addEventListener('mouseout',function(){
+            mask.style.display='none';
+            bigGround.style.display = 'none';
+        })      
+                              //鼠标在遮挡层的位置
+        box1.addEventListener('mousemove', move);
+            function move(e){
+            var x = e.pageX - box1.offsetLeft - mask.offsetWidth/2;
+            var y = e.pageY - box1.offsetTop-mask.offsetHeight/2; 
+            var numX = box1.offsetWidth - mask.offsetWidth;
+            var numY = box1.offsetHeight - mask.offsetHeight;
+            var bigNumMaxX = bigImg.offsetWidth - bigGround.offsetWidth;
+            var bigMoveWidth  = x / numX * bigNumMaxX;
+            var bigNumMaxY = bigImg.offsetHeight -bigGround.offsetHeight;
+            var bigMoveHeight = y / numY * bigNumMaxY;
+            console.log(box1.offsetWidth,bigNumMaxX , numX,x);
+            console.log(bigGround.offsetWidth);
+            if(x<=0){
+                x=0;
+            }
+            if(x>=numX){
+                x=numX;
+            } 
+            if(y<=0){
+                y=0;
+            }
+            if(y>=numY){
+                y = numY;
+            }
+            mask.style.top = y  + 'px';
+            mask.style.left =x  + 'px'; 
+            bigImg.style.left = -bigMoveWidth + 'px';
+            bigImg.style.top = -bigMoveHeight + 'px';
+            }
+        document.addEventListener('mousedo',function(){
+        document.removeEventListener('mousemove',move);
+        })
+
+        //遮挡层移动距离/遮挡层移动的最大距离 === 大图片移动的距离/大图片移动的最大距离
+     
+    }
+ 
+    
+</script>
+
+<body>
+    <div class="box">
+    <div class="mask"></div>
+    </div>
+    <div class="bigGround">
+    <img src="download/周杰伦.jpg"></img>
+    </div>
+</body>
+
+</html>
